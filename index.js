@@ -3,7 +3,9 @@ const express = require('express');
 const http = require('http');
 const morgan= require('morgan');
 const bodyParser = require('body-parser');
-const dishRouter = require("./routes/dishRouter");
+const dishRouter = require('./routes/dishRouter');
+const promoRouter = require('./routes/promoRouter');
+const leaderRouter = require('./routes/leaderRouter');
 
 const hostname = 'localhost';
 const port = 3000;
@@ -16,7 +18,9 @@ app.use(bodyParser.json());   //This allows us to parse the body of the incoming
 
 //Mounting the router
 app.use("/dishes", dishRouter);
-app.use("/dishes/:dishId", dishRouter);
+app.use("/promotions", promoRouter);
+app.use("/leaders", leaderRouter);
+
 
 //To display static, using express we can simply display the files in our folder
 app.use(express.static(__dirname + '/public'));      //This tell express to serve static files from public from the root folder of this project ie __dirname
